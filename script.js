@@ -16,7 +16,7 @@ cartBtn.addEventListener("click", () => {
     cartModal.style.display = "flex"
 })
 
-cartModal.addEventListener("click", () => {
+cartModal.addEventListener("click", (event) => {
     if (event.target === cartModal) {
         cartModal.style.display = "none"
     }
@@ -169,11 +169,13 @@ checkoutBtn.addEventListener("click", () => {
     }).join("")
 
     const message = encodeURIComponent(cartItems)
-    const phone = "5584988136868"
+    const phone = "seu_numero_de_telefone_aqui"
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addresInput.value}`, "_blank")
-    cart = []
-    updateCartModal();
+    if (addresInput !== "") {
+        window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addresInput.value}`, "_blank")
+         cart = []
+         updateCartModal();
+    }
 })
 
 function checkRestaurantOpen() {
